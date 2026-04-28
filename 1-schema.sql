@@ -9,11 +9,15 @@
 
 DROP DATABASE IF EXISTS tifosi;
 
-CREATE DATABASE IF NOT EXISTS tifosi
+CREATE DATABASE tifosi
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_bin;
-
-
+    
+-- -----------------------------------------------------------------------------
+--
+-- Sélection base de données
+--
+    USE tifosi;
 
 -- -----------------------------------------------------------------------------
 
@@ -24,18 +28,11 @@ CREATE DATABASE IF NOT EXISTS tifosi
 DROP USER IF EXISTS 'tifosi'@'localhost';
 
 CREATE USER 'tifosi'@'localhost' 
-IDENTIFIED BY 'TifosiBaseDeDonnee?';
+IDENTIFIED BY 'TifosiPassword!';
 
 GRANT ALL PRIVILEGES ON tifosi.* TO 'tifosi'@'localhost';
 
 FLUSH PRIVILEGES;
-
--- -----------------------------------------------------------------------------
---
--- Sélection base de données
---
-
- USE tifosi;
 
 -- -----------------------------------------------------------------------------
 
@@ -48,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   `nom` VARCHAR (50) NOT NULL,
 
   PRIMARY KEY (`id_ingredient`),
-  UNIQUE KEY ingredient_nom (nom)
+  UNIQUE KEY `ingredient_nom` (`nom`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Table des ingredients';
 
@@ -63,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `marque` (
   `nom` VARCHAR(50) NOT NULL,
 
   PRIMARY KEY (`id_marque`),
-  UNIQUE KEY marque_nom (nom)
+  UNIQUE KEY `marque_nom` (`nom`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Table des marques';
 
@@ -79,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `foccacia` (
   `prix` DECIMAL(5,2) NOT NULL,
 
   PRIMARY KEY (`id_foccacia`),
-  UNIQUE KEY foccacia_nom (nom),
+  UNIQUE KEY `foccacia_nom` (`nom`),
   CONSTRAINT foccacia_prix CHECK (prix > 0)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Table des foccacia';
 
@@ -95,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `boisson` (
   `nom` VARCHAR(50) NOT NULL,
 
   PRIMARY KEY (`id_boisson`),
-  UNIQUE KEY boisson_nom (nom),
+  UNIQUE KEY `boisson_nom` (`nom`),
   
   CONSTRAINT fk_boisson_marque
         FOREIGN KEY (id_marque) REFERENCES marque (id_marque)
@@ -117,6 +114,7 @@ CREATE TABLE IF NOT EXISTS `client` (
 
   PRIMARY KEY (`id_client`),
   UNIQUE KEY `email_unique` (`email`),
+  UNIQUE KEY `nom_unique` (`nom`),
   CONSTRAINT ck_client_cp CHECK (code_postal BETWEEN 1000 AND 99999)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Table des clients';
@@ -208,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `achete` (
   `id_achete` INT NOT NULL AUTO_INCREMENT,
   `id_client` INT NOT NULL,
   `id_menu` INT NOT NULL,
-  `date_achat` DATE NOT NULL DEFAULT CURRENT_DATE,
+  `date_achat` DATE NOT NULL DEFAULT CURRENT_DATE(),
 
   PRIMARY KEY (`id_achete`),
 
