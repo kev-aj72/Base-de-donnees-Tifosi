@@ -66,7 +66,7 @@ USE tifosi;
 --      10.38
 -- -----------------------------------------------------------------------------
 
-    SELECT AVG (prix) AS AveragePrice 
+    SELECT AVG(prix) AS AveragePrice 
     FROM foccacia;
     
    -- pour un resultat arrondie 
@@ -176,7 +176,7 @@ USE tifosi;
     SELECT f.nom , COUNT(c.id_ingredient) AS Nombres_Ingredients 
     FROM foccacia f 
     INNER JOIN comprend c ON f.id_foccacia = c.id_foccacia 
-    GROUP BY f.nom;
+    GROUP BY f.id_foccacia, f.nom;
 
 
 -- -----------------------------------------------------------------------------
@@ -201,12 +201,12 @@ USE tifosi;
 --
 -- -----------------------------------------------------------------------------
 
-    SELECT f.nom , COUNT(c.id_ingredient) AS Foccacia_Ingredients_max
+    SELECT f.nom , COUNT(c.id_ingredient) AS foccacia_ingredient
     FROM foccacia f
     INNER JOIN comprend c
     ON f.id_foccacia = c.id_foccacia
     GROUP BY f.id_foccacia, f.nom
-    ORDER BY Nombre_Ingredients DESC
+    ORDER BY foccacia_ingredient DESC
     LIMIT 1;
 
 

@@ -17,33 +17,49 @@ Requêtes SQL permettant d'interroger la base de données.
 
 ## Informations de connexion
 Hôte        : localhost
+
 Base        : tifosi
+
 Utilisateur : tifosi
-Mot de passe: TifosiBaseDeDonnee?
+
+Mot de passe: TifosiPassword!
+
 Port        : 3306 (par défaut)
 
 ## Contenu de la base de données
 --La base tifosi contient les tables suivantes :
 ingredient   -> Liste des ingrédients
+
 marque       -> Marques des boissons
+
 foccacia     -> Liste des focaccias
+
 boisson      -> Liste des boissons
+
 client       -> Clients
+
 menu         -> Menus disponibles
+
 comprend     -> Relation entre focaccia et ingrédients
+
 contient     -> Relation entre menu et boissons
+
 achete       -> Relation entre client et menu
 
 ## Relations principales :
 foccacia  ---< comprend >--- ingredient
 menu      ---< contient >--- boisson
+
 client    ---< achete >--- menu
+
 boisson   ---> marque
+
 menu      ---> foccacia
 
 ## Importation avec phpMyAdmin
 
 Ouvrir phpMyAdmin
+
 Cliquer sur Importer
 
 ## Importer les fichiers dans cet ordre :
@@ -65,7 +81,9 @@ Entrer le mot de passe root.
 Exécuter les scripts dans cet ordre :
 
 SOURCE 01_structure.sql;
+
 SOURCE 02_donnees.sql;
+
 SOURCE 03_requetes.sql;
 
 ## Utilisation après import

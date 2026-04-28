@@ -2,6 +2,10 @@
 -- PROJET TIFOSI - SCRIPT DE DONNEES
 -- -----------------------------------------------------------------------------
 
+-- 
+-- Sélection base de données
+--
+
 USE tifosi;
 
 --
