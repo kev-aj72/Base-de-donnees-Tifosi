@@ -253,12 +253,11 @@ USE tifosi;
 --      Tomate cerise  
 -- -----------------------------------------------------------------------------
 
-    SELECT i.nom AS ingredient_non_utiliser 
+    SELECT i.nom AS ingredient_non_utilise
     FROM ingredient i
     LEFT JOIN comprend c 
     ON i.id_ingredient = c.id_ingredient
     WHERE c.id_ingredient IS NULL;
-
 
 -- -----------------------------------------------------------------------------
 --   RESULTAT OBTENU
