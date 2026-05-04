@@ -206,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `achete` (
   `id_achete` INT NOT NULL AUTO_INCREMENT,
   `id_client` INT NOT NULL,
   `id_menu` INT NOT NULL,
-  `date_achat` DATE NOT NULL DEFAULT CURRENT_DATE(),
+  `date_achat` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 
   PRIMARY KEY (`id_achete`),
 

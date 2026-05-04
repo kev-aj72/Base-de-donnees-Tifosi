@@ -6,13 +6,13 @@ Ce projet contient une base de données MySQL nommée tifosi destinée à gérer
 
 ## Le projet est composé de 3 scripts SQL :
 
---01_structure.sql
+--01_structure.sql:
 Création de la base de données, de l'utilisateur et des tables.
 
---02_donnees.sql
+--02_donnees.sql:
 Insertion des données (ingrédients, focaccias, boissons, menus, clients).
 
---03_requetes.sql
+--03_requetes.sql:
 Requêtes SQL permettant d'interroger la base de données.
 
 ## Informations de connexion
@@ -28,6 +28,7 @@ Port        : 3306 (par défaut)
 
 ## Contenu de la base de données
 --La base tifosi contient les tables suivantes :
+
 ingredient   -> Liste des ingrédients
 
 marque       -> Marques des boissons
@@ -48,6 +49,7 @@ achete       -> Relation entre client et menu
 
 ## Relations principales :
 foccacia  ---< comprend >--- ingredient
+
 menu      ---< contient >--- boisson
 
 client    ---< achete >--- menu
@@ -64,8 +66,11 @@ Cliquer sur Importer
 
 ## Importer les fichiers dans cet ordre :
 --01_structure.sql
+
 --02_donnees.sql
+
 --03_requetes.sql (optionnel)
+
 Vérifier que la base tifosi apparaît dans la liste.
 
 
@@ -105,5 +110,7 @@ USE tifosi;
 Toujours exécuter dans cet ordre :
 
 01_structure.sql  
+
 02_donnees.sql  
+
 03_requetes.sql (optionnel)
