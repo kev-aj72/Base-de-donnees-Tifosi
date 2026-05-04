@@ -14,8 +14,8 @@ USE tifosi;
 -- -----------------------------------------------------------------------------
 --   RESULTAT ATTENDU
 --   
---      Américaine
---      Emmentalaccia
+--        Américaine
+--        Emmentalaccia
 --        Gorgonzollaccia
 --        Hawaienne
 --        Mozaccia
@@ -30,8 +30,8 @@ USE tifosi;
 -- -----------------------------------------------------------------------------
 --   RESULTAT OBTENU
 --   
---      Américaine
---      Emmentalaccia
+--        Américaine
+--        Emmentalaccia
 --        Gorgonzollaccia
 --        Hawaienne
 --        Mozaccia
